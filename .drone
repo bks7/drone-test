@@ -1,0 +1,12 @@
+pipeline:
+  grafana-annotation:
+    image: quay.io/postmates/grafana-annotation:0.0.1
+    api_url: https://grafana.stage.us-west-2.postmates.com
+    secrets:
+      - source: global_grafana_stage_key
+        target: api_key
+    time: ${DRONE_BUILD_STARTED}
+    timeend: ${DRONE_BUILD_FINISHED}
+    isregion: true
+    text: ${DRONE_REPO_NAME}
+    tags: [tag1, tag2, tag3]
