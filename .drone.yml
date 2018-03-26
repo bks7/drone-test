@@ -1,5 +1,5 @@
 pipeline:
-  grafana-annotation:
+  grafana-annotation-stage:
     image: quay.io/postmates/grafana-annotation:0.0.2
     api_url: https://grafana.stage.us-west-2.postmates.com
     secrets:
@@ -8,3 +8,19 @@ pipeline:
     isregion: true
     text: ${DRONE_REPO_NAME}
     tags: [tag1, tag2, tag3]
+    when:
+      event: deployment
+      environment: stage
+
+  grafana-annotation-prod
+    image: quay.io/postmates/grafana-annotation:0.0.2
+    api_url: https://grafana.stage.us-west-1.postmates.com
+    secrets:
+      - source: global_grafana_prod_key
+        target: api_key
+    isregion: true
+    text: ${DRONE_REPO_NAME}
+    tags: [tag1, tag2, tag3]
+    when:
+      event: deployment
+      environment: prod
