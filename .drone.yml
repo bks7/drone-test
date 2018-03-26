@@ -12,7 +12,7 @@ pipeline:
       event: deployment
       environment: stage
 
-  grafana-annotation-prod
+  grafana-annotation-prod:
     image: quay.io/postmates/grafana-annotation:0.0.2
     api_url: https://grafana.stage.us-west-1.postmates.com
     secrets:
