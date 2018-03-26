@@ -14,7 +14,7 @@ pipeline:
 
   grafana-annotation-prod:
     image: quay.io/postmates/grafana-annotation:0.0.2
-    api_url: https://grafana.stage.us-west-1.postmates.com
+    api_url: https://grafana.prod.us-west-1.postmates.com
     secrets:
       - source: global_grafana_prod_key
         target: api_key
